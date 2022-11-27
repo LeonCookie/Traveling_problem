@@ -6,6 +6,8 @@ class TSP{
     static int no_of_vertices, current_vertex, total_min_cost=0;//vertex= wierzchołek
     static String FirstMiasto="",  LastMiast="";
 
+    static int max = 999, min = 1;
+
     public static void zamienNazwa(int i, int j){
         switch (i){//firstMiasto
             case 0:
@@ -184,8 +186,8 @@ class TSP{
                 {
                 zamienNazwa(i,j);
 
-                    System.out.print(("Podaj kosz miedzy miastami: "+(FirstMiasto)+" --> "+(LastMiast)+": "));
-                    two_dim_cost_matric[i][j]=scobj.nextInt();
+                    //System.out.print(("Podaj kosz miedzy miastami: "+(FirstMiasto)+" --> "+(LastMiast)+": "));
+                    two_dim_cost_matric[i][j]=(int)Math.floor(Math.random()*(max-min+1)+min);
                 }
             }
         }
