@@ -208,7 +208,7 @@ class TSP{
                 if(two_dim_cost_matric[c_vertex][i]+two_dim_cost_matric[i][c_vertex]<MIN)
                 {
                     MIN = two_dim_cost_matric[c_vertex-1][i]+two_dim_cost_matric[i][c_vertex-1];
-                    cost_spent = two_dim_cost_matric[c_vertex][i];
+                    cost_spent = two_dim_cost_matric[c_vertex-1][i];
                     next_vertex = i;
                 }
             }
@@ -223,7 +223,7 @@ class TSP{
 
         zamienSciezke((c_vertex));
         visited_copy_array[c_vertex-1]=true;
-        System.out.print(c_vertex+"--->");
+        System.out.print(FirstMiasto+"--->");
         int nxt_visit = next_visit(c_vertex);
         if(nxt_visit==Integer.MAX_VALUE+1){
             System.out.print(current_vertex);
