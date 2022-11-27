@@ -6,7 +6,7 @@ class TSP{
     static int no_of_vertices, current_vertex, total_min_cost=0;//vertex= wierzchołek
     static String FirstMiasto="",  LastMiast="";
 
-    static int max = 999, min = 1;
+    static int max = 999, min = 1, noweJ,noweI,ILLE=0;
 
     public static void zamienNazwa(int i, int j){
         switch (i){//firstMiasto
@@ -114,7 +114,7 @@ class TSP{
 
         }
     }// zamiana int i && j na string
-    public static void zamienSciezke(int obecny){
+    public static void zamienSciezke(int obecny, int noweJ, int ILLE){
         switch (obecny){//firstMiasto
             case 1:
                 FirstMiasto="Gdynia";
@@ -167,6 +167,7 @@ class TSP{
 
 
     }}
+
     public static void inputs()
     {
         Scanner scobj = new Scanner(System.in);
@@ -223,7 +224,7 @@ class TSP{
     }
     public static void shortest_distance(int c_vertex){
 
-        zamienSciezke((c_vertex));
+        zamienSciezke((c_vertex), noweJ, ILLE);
         visited_copy_array[c_vertex-1]=true;
         System.out.print(FirstMiasto+"--->");
         int nxt_visit = next_visit(c_vertex);
@@ -235,11 +236,34 @@ class TSP{
         }
         shortest_distance(nxt_visit);
     }
-    public static void main(String[]args){
+    public static void main(String[]args) {
+
+        Scanner scobj = new Scanner(System.in);
         inputs();
         System.out.print("\nSciezka: ");
-        shortest_distance (current_vertex);
+        shortest_distance(current_vertex);
         System.out.println();
-        System.out.println("\nKoszt podruzy:"+total_min_cost);
+        System.out.println("\nKoszt podruzy:" + total_min_cost);
+        System.out.println("\n");
+        System.out.print("Podaj pierwszy wierzcholek: ");
+        noweI = scobj.nextInt();
+        System.out.print("Podaj drugie miasto: ");
+        noweI = scobj.nextInt();
+        System.out.print("Nowa wartosc dla miasta1");
+        ILLE = scobj.nextInt();
+
+        for (int i = 0; i < no_of_vertices; i++) {
+            for (int j = 0; j < no_of_vertices; j++) {
+                if(noweJ ==i && noweJ == j){
+                    two_dim_cost_matric[noweI][noweJ]=ILLE;
+                }
+                System.out.print(two_dim_cost_matric[i][j] + "    ");
+            }
+            System.out.println();
+
+
+        }
+
+
     }
 }
